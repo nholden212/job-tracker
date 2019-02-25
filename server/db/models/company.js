@@ -16,6 +16,18 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Company.associate = function(models) {
     // associations can be defined here
+    Company.belongsTo(models.User, {
+      foreignKey: "userId",
+      onDelete: "CASCADE"
+    });
+    Company.hasMany(models.Contact, {
+      foreignKey: "companyId",
+      as: "contacts"
+    });
+    Company.hasMany(models.Activity, {
+      foreignKey: "companyId",
+      as: "companies"
+    });
   };
   return Company;
 };

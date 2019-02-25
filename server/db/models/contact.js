@@ -28,6 +28,18 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Contact.associate = function(models) {
     // associations can be defined here
+    Contact.belongsTo(models.User, {
+      foreignKey: "userId",
+      onDelete: "CASCADE"
+    });
+    Contact.belongsTo(models.Company, {
+      foreignKey: "companyId",
+      onDelete: "CASCADE"
+    });
+    Contact.hasMany(models.Activity, {
+      foreignKey: "activityId",
+      as: "activity"
+    });
   };
   return Contact;
 };
