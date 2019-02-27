@@ -1,6 +1,6 @@
 module.exports = {
-    index(req, res, next){
-      res.render("static/index");
+    example(req, res, next){
+      console.log("Ay fam what's good it's ya boy slick Nick");
     }
   }
   
